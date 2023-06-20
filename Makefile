@@ -6,60 +6,43 @@
 #    By: gcavanna <gcavanna@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:11:53 by gcavanna          #+#    #+#              #
-#    Updated: 2023/06/20 14:15:43 by gcavanna         ###   ########.fr        #
+#    Updated: 2023/06/20 15:22:24 by gcavanna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#Colors constants
-PURPLE			= \033[38;5;141m
-GREEN			= \033[38;5;46m
-RED				= \033[0;31m
-GREY			= \033[38;5;240m
-RESET			= \033[0m
-BOLD			= \033[1m
-CLEAR			= \r\033[K
+NAME = philo
 
-# Executable and compilation
-NAME		= philo
+SRC = philo.c utils.c 
 
-SRC_DIR		= ./srcs/
-SRCS		= philo.c \
-		  utils.c \
+OBJ = $(SRC:.c=.o)
 
-OBJ_DIR		= ./objs/
-OBJS    	= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
+FLAGS = -Wall -Werror -Wextra
+LINKS = -lpthread
 
-
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -pthread
-RM			= rm -rf
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@printf "\033[2K\r» [$(NAME)]: Compiling %s... " $(notdir $<)
-	@$(CC) $(CFLAGS) -I$(SRC_DIR) -c $< -o $@
+NONE='\033[0m'
+GREEN='\033[32m'
+GRAY='\033[2;37m'
+CURSIVE='\033[3m'
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@printf "\033[2K\r────────────────────────────────────────────────────────────────────────────\n» [$(NAME)]: $(NAME) compiled successfully.\n────────────────────────────────────────────────────────────────────────────\n"
+$(NAME): $(OBJ)
+	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
+	@gcc $(FLAGS) $(OBJ) $(LINKS) -o $(NAME)
+	@echo $(GREEN)"- Compiled -"$(NONE)
+	@rm $(OBJ)
+	@echo $(CURSIVE)$(GRAY) "     Deleted object files" $(NONE)
 
-$(OBJS): | $(OBJ_DIR)
-
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+$(OBJ): $(SRC)
+	@echo $(CURSIVE)$(GRAY) "     - Making object files..." $(NONE)
+	@gcc $(FLAGS) -c $(SRC)
 
 clean:
-	@$(MAKE) clean -C $(SRC_DIR)
-	@$(RM) $(OBJ_DIR)
-	@printf "\033[2K\r» [$(NAME)]: Objects were cleaned successfully.\n"
+	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
+	@rm -rf $(OBJ)
 
 fclean: clean
-	@$(MAKE) fclean -C $(SRC_DIR)
-	@$(RM) $(NAME)
-	@printf "\033[2K\r────────────────────────────────────────────────────────────────────────────\n» [$(NAME)]: Project cleaned successfully.\n────────────────────────────────────────────────────────────────────────────\n"
+	@echo $(CURSIVE)$(GRAY) "     - Removing $(NAME)..." $(NONE)
+	@rm -rf $(NAME)
 
 re: fclean all
-
-.SILENT: all clean fclean re
-.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: gcavanna <gcavanna@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:26:01 by gcavanna          #+#    #+#             */
-/*   Updated: 2023/06/20 12:34:56 by gcavanna         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:27:53 by gcavanna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ int ft_controller_error_intput(int ac, char **av)
     int i;
 
     i = 1;
-    if (ac != 5 || ac != 6)
+    if (ac < 5 || ac > 6)
         return (ft_error());
     while (i < ac)
     {
-        if (!ft_isdigit(av[i]) || ft_atoi(av[i]) < 0 || ft_atoi(av[1]) == 0)
+        if (!ft_isdigit(av[i][0]) || ft_atoi(av[i]) < 0 || ft_atoi(av[1]) == 0)
             return (ft_error());
         else if (ft_atoi(av[7]) == 0)
             return (ft_error());
-        else if (ft_atoi(av[i]) >= 0 && ft_isdigit(av[i]))
+        else if (ft_atoi(av[i]) >= 0 && ft_isdigit(av[i][0]))
             i++;
     }
     return (1);
