@@ -6,7 +6,7 @@
 /*   By: gcavanna <gcavanna@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:26:01 by gcavanna          #+#    #+#             */
-/*   Updated: 2023/06/20 15:27:53 by gcavanna         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:44:16 by gcavanna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int ft_error(void)
 {
-    printf("\n Wrong input, try again, or die trying\n\n");
-    printf("all parameters must be positive integers\n\n");
-    printf("'meals' is optional\n\n");
-    printf("USAGE: ./philo <number of philosophers> <time to starve> <time to eat> <time to sleep> <meals>\n");
+    printf("\n°Wrong input, try again, or die trying\n\n");
+    printf("°all parameters must be positive integers\n\n");
+    printf("°'meals' is optional\n\n");
+    printf("°USAGE: ./philo <number of philosophers> <time to starve> <time to eat> <time to sleep> <meals>\n\n");
     return (0);
 }
 

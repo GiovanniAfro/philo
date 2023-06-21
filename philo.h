@@ -6,7 +6,7 @@
 /*   By: gcavanna <gcavanna@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:29:21 by gcavanna          #+#    #+#             */
-/*   Updated: 2023/06/20 12:31:06 by gcavanna         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:29:19 by gcavanna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,6 @@ typedef struct	s_time
 	int time_to_sleep;
 }	t_time;
 
+int 	ft_controller_error_intput(int ac, char **av);
+long	ft_time(void);
 #endif
