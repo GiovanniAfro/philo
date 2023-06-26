@@ -6,7 +6,7 @@
 /*   By: gcavanna <gcavanna@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:26:01 by gcavanna          #+#    #+#             */
-/*   Updated: 2023/06/20 15:44:16 by gcavanna         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:06:44 by gcavanna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int ft_atoi(char *str)
 
 int ft_isdigit(int c)
 {
-    return (c >= '0' & c <= '9');
+    return ((c >= '0') & (c <= '9'));
 }
 int ft_controller_error_intput(int ac, char **av)
 {

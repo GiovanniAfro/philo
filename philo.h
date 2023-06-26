@@ -6,7 +6,7 @@
 /*   By: gcavanna <gcavanna@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:29:21 by gcavanna          #+#    #+#             */
-/*   Updated: 2023/06/20 17:29:19 by gcavanna         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:04:13 by gcavanna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,24 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-typedef struct s_philo
+typedef struct s_time
 {
-	size_t	philo;
-	pthread_mutex_t *left_fork;
-	pthread_mutex_t *right_fork;
-	int	number_of_meals;
-}		t_philo;
-
-typedef struct	s_time
-{
-	int time_to_die;
-	int time_to_eat;
-	int time_to_sleep;
+	size_t	number_of_philos;
+	int 	time_to_die;
+	int 	time_to_eat;
+	int 	time_to_sleep;
+	int		meals;
 }	t_time;
 
-int 	ft_controller_error_intput(int ac, char **av);
-long	ft_time(void);
+typedef struct	s_philo
+{
+	size_t			philo_id;
+	t_time			*time;
+	pthread_t		philo;
+	pthread_mutex_t *left_fork;
+	pthread_mutex_t *right_fork;
+}	t_philo;
+
+int	ft_controller_error_intput(int ac, char **av);
+
 #endif
