@@ -6,20 +6,16 @@
 /*   By: gcavanna <gcavanna@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:17:15 by gcavanna          #+#    #+#             */
-/*   Updated: 2023/06/26 15:06:46 by gcavanna         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:03:08 by gcavanna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long   ft_time(void)
+time_t   get_timestamp(void)
 {
     struct timeval  start_time;
-    struct timeval  end_time;
-    long    milliseconds;
 
-    gettimeofday(&start_time, NULL);
     gettimeofday(&end_time, NULL);
-    milliseconds = start_time.tv_sec * 1000 + start_time.tv_usec / 1000;
-    return (milliseconds);
+    return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
