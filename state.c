@@ -6,7 +6,7 @@
 /*   By: gcavanna <gcavanna@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 12:06:40 by gcavanna          #+#    #+#             */
-/*   Updated: 2023/06/27 16:03:43 by gcavanna         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:22:40 by gcavanna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ static void	*think_state(void *arg)
 
 	philosopher = (t_philosopher *)arg;
 	global = (t_global *)philosopher->left_fork;
-	philosopher = (t_philosopher *)arg;
-	global = (t_global *)philosopher->left_fork;
-	print_message(global, philosopher, "is sleeping");
+	print_message(global, philosopher, "is sleeping💤");
 	usleep(global->time_to_spleep);
 	return (NULL);
 }
@@ -60,8 +58,6 @@ static void	*think_state(void *arg)
 
 	philosopher = (t_philosopher *)arg;
 	global = (t_global *)philosopher->left_fork;
-	philosopher = (t_philosopher *)arg;
-	global = (t_global *)philosopher->left_fork;
 	print_message(global, philosopher, "is thinking🤔");
 	return (NULL);
 }
@@ -71,8 +67,6 @@ static void	*dead_state(void *arg)
 	t_philosopher	*philosopher;
 	t_global		*global;
 
-	philosopher = (t_philosopher *)arg;
-	global = (t_global *)philosopher->left_fork;
 	philosopher = (t_philosopher *)arg;
 	global = (t_global *)philosopher->left_fork;
 	pthread_mutex_lock(&global->death_mutex);
